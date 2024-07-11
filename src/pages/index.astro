@@ -143,6 +143,7 @@ import { Image } from "astro:assets";
                     item-style={content.frontmatter.size}
                     role="listitem"
                     class="work_item w-dyn-item "
+                    onclick={`window.location.href='${content.frontmatter.route}'`}
                   >
                     <Image
                       src={content.frontmatter.image}
