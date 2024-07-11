@@ -5,20 +5,18 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
     output: "server",
     adapter: vercel(),
+    remotepatterns: [{ protocol: "https" }],
     devToolbar: {
         enabled: false
     },
-    vite: {
-        build: {
-            rollupOptions: {
-                // Input configuration for rollup (no need to include specific images here)
+    buildOptions: {
+        viteOptions: {
+            build: {
+                rollupOptions: {
+                    input: '/src/assets/portraits/*.{jpeg,jpg,png,gif,webp}',
+                },
             },
             assetsInclude: ['**/*.jpeg', '**/*.jpg', '**/*.png', '**/*.gif', '**/*.webp'],
         },
     },
-    buildOptions: {
-        sitemap: false,
-        // Other build options if needed
-    },
-    // Other configurations if needed
 });
